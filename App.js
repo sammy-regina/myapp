@@ -8,6 +8,9 @@ export default function App() {
        source={requireNativeComponent("./src/assets/logo.png")}
        style={styles.logo}
       />
+
+      <Text style={styles.title}>20 caracteres</Text>
+      
       <StatusBar style="auto" />
     </View>
   );
