@@ -1,17 +1,59 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image} from 'react-native';
+import { StyleSheet, Text, View, Image, TextInput} from 'react-native';
+import React, {useState} from 'react';
+import {view, Text, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
 
 export default function App() {
+  const [username, setUsername] = userState('')
+  const [email, setEmail] = userState('')
+  const [password, setPassword] = userState('')
+
+function handleSingnIn(){
+  if(username === '' || email === '' || password === ''){
+    alert("Por favor, preencha todos os campos obrigatórios.")
+  return;
+  }
+
+  const data = {
+    username,
+    email,
+    password,
+  }
+
+  console.log(data);
+
+}
+
   return (
     <View style={styles.container}>
-      <Image
-       source={requireNativeComponent("./src/assets/logo.png")}
-       style={styles.logo}
+     
+      <Text style={styles.title}>Bem- Vindo(a)</Text>
+      
+      <TextInput
+       style={styles.input}
+       onChangeText={setUsername}
+       voLue={username}
+       placeholder='Seu username'
       />
 
-      <Text style={styles.title}>20 caracteres</Text>
-      
-      <StatusBar style="auto" />
+      <TextInput
+       style={styles.input}
+       onChangeText={setEmail}
+       voLue={email}
+       placeholder='Digite seu email'
+      />
+
+      <TextInput
+       style={styles.input}
+       onChangeText={setPassword}
+       voLue={password}
+       placeholder='Sua senha'
+       secureTextEntry={true}
+      />
+
+      <TouchableOpacity style= {styles.button} onPress={handleSingnIn}>
+        <Text style={styles.bbuttonText}>Acessar</Text>        
+      </TouchableOpacity>
     </View>
   );
 }
@@ -19,9 +61,20 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F3F3FF',
-    alignItems: 'center',
     justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F3F3FF',
+    paddingHorizontal: 18
+  },
+  title:{
+   fontSize: 34,
+   marginButtom: 34,
+   color: '#121212',
+   fontWeight: 'bold'
+  },
+  input:{
+    width: '100%',
+    height: 40,
   },
   logo:{
     marginBotton: 60
