@@ -8,21 +8,20 @@ export default function App() {
   const [email, setEmail] = userState('')
   const [password, setPassword] = userState('')
 
-function handleSingnIn(){
-  if(username === '' || email === '' || password === ''){
-    alert("Por favor, preencha todos os campos obrigatórios.")
-  return;
+  function handleSingnIn(){
+    if(username === '' || email === '' || password === ''){
+     alert("Por favor, preencha todos os campos obrigatórios.")
+     return;
+    }
+
+    const data = {
+      username,
+      email,
+      password,
+    }
+
+    console.log(data);
   }
-
-  const data = {
-    username,
-    email,
-    password,
-  }
-
-  console.log(data);
-
-}
 
   return (
     <View style={styles.container}>
